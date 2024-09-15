@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+.page-content {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes fade-in-from-black {
+  0% {
+    opacity: 0;
+    background-color: black;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.page-content {
+  animation: fade-in-from-black 0.5s ease-in-out forwards;
+}
+:root {
+  --base-colour: white;
+  --base-varient: rgb(20, 239, 255);
+  --text-colour: #abeff8;
+  --secondary-colour: rgb(2, 153, 153);
+  --primary-colour: white;
+  --accent-colour: rgb(133, 156, 156);
+  --font-family: "lafleur-wide", sans-serif; 
+}
+
+.pg1 {
+  --base-colour: rgb(0, 0, 0);
+  --base-varient: rgb(206, 0, 0);
+  --text-colour: #f8ceab;
+  --secondary-colour: rgb(153, 2, 2);
+  --primary-colour: white;
+  --accent-colour: rgb(29, 28, 28);
+  --font-family: "antipoda-variable", sans-serif
+  ;
+}
+
+.pg3 {
+  --base-colour: rgb(0, 0, 0);
+  --base-varient: rgb(54, 7, 92);
+  --text-colour: #f8abcf;
+  --secondary-colour: rgb(90, 0, 78);
+  --primary-colour: white;
+  --accent-colour: rgb(29, 28, 28);
+  --font-family: "deuterium-variable", sans-serif;
+  --font-variation-settings: "wght" 650;
+}
+/* .pg3 nav a[href="Pg3.html"]:hover {
+  color: var(--secondary-colour);
+  transform: translateY(-10px) scale(2);
+} */
+#bgvideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  /* backdrop-filter: blur(90%); */
+}
+
+#grid-container {
+  display: grid;
+  grid-template-areas:
+    "header1"
+    "menu"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 0fr 0fr;
+  height: 100vh;
+  align-items: center;
+  padding: 20px;
+  border: 5px solid #1a1a1a;
+  position: relative;
+}
+
+#grid-container::before,
+#grid-container::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    --base-varient 22px,
+    --base-varient 22px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+#grid-container::after {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.1) 21px,
+    rgba(0, 0, 0, 0.1) 22px
+  );
+}
+
+.header1 {
+  grid-area: header1;
+  text-align: center;
+  padding: 2rem;
+  z-index: 2;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  /* backdrop-filter: invert(90%); */
+  backdrop-filter: blur(30px);
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border: 2px solid #000;
+  font-variation-settings: var(--font-variation-settings);
+}
+
+.header1 h1 {
+  font-family: var(--font-family);
+  font-size: 10vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--base-varient);
+  margin-bottom: auto;
+  text-align: left;
+  backdrop-filter: invert(90%);
+  backdrop-filter: blur;
+  text-shadow: 1px 1px 2px rgba(104, 40, 11, 0.5);
+}
+
+#menu {
+  grid-area: menu;
+  display: flex;
+  justify-content: right;
+  z-index: 2;
+  padding-right: 1.8rem;
+  /* Remove the background color to make the menu transparent */
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(12px, 2vw, 20px);
+  color: var(--base-varient);
+  display: inline-block;
+  padding: 3rem;
+  transition: transform 0.5s ease, color 0.5s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--secondary-colour);
+  transform: translateY(-10px) scale(2);
+}
+
+
+
+nav a:hover::after {
+  width: 100%;
+}
+
+footer {
+  grid-area: footer;
+  text-align: center;
+  padding: 1rem;
+  z-index: 2;
+  /* background-color: var(--accent-colour); */
+  backdrop-filter: blur(30px);
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border: 2px solid #000;
+}
+
+footer a {
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--text-colour);
+}
